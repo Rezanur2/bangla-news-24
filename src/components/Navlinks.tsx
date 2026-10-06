@@ -15,7 +15,7 @@ const Navlinks = async () => {
   const navs: Navs[] = dataCategories.data;
   const filteredNavs = navs.filter((nav) => nav.scrapable);
   return (
-    <div className="flex mt-4 px-4 pb-3 gap-5 text-neutral-700 text-sm">
+    <div className="flex mt-4 px-4 gap-5 text-neutral-700 text-sm">
       <Link href="/" className=" hover:text-red-700">
         হোম
       </Link>
