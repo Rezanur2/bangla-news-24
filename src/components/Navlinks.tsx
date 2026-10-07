@@ -19,7 +19,7 @@ const Navlinks = async () => {
         হোম
       </Link>
       {filteredNavs.map((nav, ind) => (
-        <Link key={ind} href={nav.slug} className=" hover:text-red-700">
+        <Link key={ind} href={`/category/${nav.slug}`} className=" hover:text-red-700">
           {nav.title}
         </Link>
       ))}

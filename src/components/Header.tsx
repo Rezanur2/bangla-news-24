@@ -5,7 +5,6 @@ const Header = () => {
   const date = new Date().toLocaleDateString("bn-BD", {
     dateStyle: "full",
   });
-  console.log(date);
   return (
     <header>
       <div className="relative mx-auto max-w-7xl px-4 py-4">

@@ -1,5 +1,4 @@
 import MainNews from "@/components/MainNews";
-import Marquee from "@/components/Marquee";
 import MostReadNews from "@/components/MostReadNews";
 import NewsCard from "@/components/NewsCard";
 
@@ -23,11 +22,10 @@ export default async function Home() {
   const sections = data.data;
   const mainNews = sections[0].articles;
   const otherSections: IOtherSection[] = sections.slice(1, 10);
-  console.log(otherSections);
+
   return (
     <div>
-      <Marquee />
-      <div className="grid grid-cols-3 mx-auto max-w-7xl px-5 py-7 gap-5">
+      <div className="grid grid-cols-3 gap-5">
         {/* Main News */}
         <div className="col-span-2">
           <MainNews news={mainNews} />

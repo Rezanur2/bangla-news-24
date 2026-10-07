@@ -1,5 +1,5 @@
 import Image from "next/image";
-import React from "react";
+import Link from "next/link";
 
 interface News {
   title: string;
@@ -21,29 +21,35 @@ const NewsCard = ({ news }: { news: News }) => {
   };
 
   return (
-    <div>
-      <div className="card bg-base-100 shadow-sm">
-        <figure>
+    <Link href={`/news/${news.id}`} className="block w-full h-full group">
+      <div className="card bg-base-100 shadow-sm overflow-hidden flex flex-col h-full transition-shadow duration-200 group-hover:shadow-md">
+        <figure className="relative aspect-video w-full">
           <Image
             src={news.imageUrl}
-            width={600}
-            height={600}
+            fill
+            className="object-contain"
             alt={news.imageAlt}
           />
         </figure>
-        <div className="card-body px-3 py-4">
-          <p className="text-red-600 text-xs font-semibold">{news.category}</p>
-          <h2 className="text-base font-semibold line-clamp-2">{news.title}</h2>
-          <p className="text-neutral-600 text-sm line-clamp-2">
-            {news.description}
-          </p>
+        <div className="card-body p-4">
+          <div className="w-full space-y-2">
+            <p className="text-red-600 text-xs font-semibold m-0 p-0">
+              {news.category}
+            </p>
+            <h2 className="text-base font-semibold line-clamp-2 mt-1 p-0">
+              {news.title}
+            </h2>
+            <p className="text-neutral-600 text-sm line-clamp-2 mt-1 p-0">
+              {news.description}
+            </p>
+          </div>
           {/* date */}
           <p className="text-xs text-neutral-400 mt-2">
             {formatBengaliDateTime(news.firstPublished)}
           </p>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 
