@@ -9,7 +9,7 @@ interface Headlines {
 const Marquee = async () => {
   const res = await fetch("https://news-api-v2.vercel.app/api/news?limit=10");
   const newsObj = await res.json();
-  const headlines: Headlines[] = newsObj.data;
+  const headlines: Headlines[] = newsObj?.data;
   return (
     <div className="bg-red-700 text-white text-sm">
       <div className="flex mx-auto max-w-7xl">

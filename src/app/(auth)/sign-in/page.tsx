@@ -1,10 +1,31 @@
+'use client'
+
+import { signIn } from "@/lib/auth-client";
+import toast from "react-hot-toast";
+
 const page = () => {
+    const onSubmit = async(e: React.SubmitEvent<HTMLElement>) => {
+        e.preventDefault();
+        const formData = new FormData(e.target);
+        const user = Object.fromEntries(formData.entries()) as { email: string, password: string };
+
+        const {data, error} = await signIn.email({
+            ...user,
+            callbackURL: "/"
+        })
+        if (data) {
+            toast.success("Sign In successful!")
+        }
+        if (error) {
+            toast.error(error.message ?? "একটি সমস্যা হয়েছে। আবার চেষ্টা করুন।")
+        }
+    }
   return (
     <div className="mx-auto max-w-sm">
       <p className="mb-4 text-center text-2xl font-bold text-red-700">
         সাইন ইন
       </p>
-      <form className="flex flex-col">
+      <form onSubmit={onSubmit} className="flex flex-col">
         <fieldset className="fieldset w-xs">
           <label className="text-sm text-neutral-700">ইমেইল</label>
           <input
