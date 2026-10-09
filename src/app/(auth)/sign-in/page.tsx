@@ -19,7 +19,15 @@ const page = () => {
         if (error) {
             toast.error(error.message ?? "একটি সমস্যা হয়েছে। আবার চেষ্টা করুন।")
         }
-    }
+  }
+  
+  const handleGoogleSignIN = async () => {
+    const data = await signIn.social({
+      provider: "google"
+    });
+    console.log(data);
+  }
+
   return (
     <div className="mx-auto max-w-sm">
       <p className="mb-4 text-center text-2xl font-bold text-red-700">
@@ -44,6 +52,7 @@ const page = () => {
           </button>
         </fieldset>
       </form>
+      <button onClick={handleGoogleSignIN} className="btn">Sign In With Google</button>
     </div>
   );
 };
